@@ -1,0 +1,5 @@
+MarsAir:
+  Logo: //body//a[normalize-space()="MarsAir"]
+  Navigation:
+    Report an issue: //a[normalize-space()="Report an issue"]
+    Problem definition: //a[normalize-space()="Problem definition"]

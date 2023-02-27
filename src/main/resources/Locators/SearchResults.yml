@@ -1,0 +1,6 @@
+Search Result:
+  Title: //*[@id="content"]/h2
+  Button:
+    Back: //*[@id="content"]//a[normalize-space()="Back"]
+  Message: //*[@id="content"]//p[normalize-space()="${value}"]
+  Promo Code Status: //*[@id="content"]//p[@class="promo_code"]

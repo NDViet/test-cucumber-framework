@@ -1,0 +1,17 @@
+Search Form:
+  Title: //*[@id="content"]/h2[normalize-space()="Welcome to MarsAir!"]
+  Button:
+    Search: //*[@id="content"]//input[@value="Search"]
+  Departure:
+    Label: //*[@id="content"]//label[@for="departing"]
+    ComboBox: //*[@id="content"]//select[@id="departing"]
+    Select: //*[@id="content"]//select[@id="departing"]//option[normalize-space()="${value}"]
+    Select Index: //*[@id="content"]//select[@id="departing"]//option[@value="${index}"]
+  Return:
+    Label: //*[@id="content"]//label[@for="returning"]
+    ComboBox: //*[@id="content"]//select[@id="returning"]
+    Select: //*[@id="content"]//select[@id="returning"]//option[normalize-space()="${value}"]
+    Select Index: //*[@id="content"]//select[@id="returning"]//option[@value="${index}"]
+  Promotional Code:
+    Label: //*[@id="content"]//label[@for="promotional_code"]
+    Textbox: //*[@id="content"]//input[@id="promotional_code"]

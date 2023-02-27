@@ -1,0 +1,2 @@
+Report An Issue:
+  Title: //*[@id="content"]/h2[normalize-space()="New issue report"]
