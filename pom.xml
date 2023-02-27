@@ -4,14 +4,47 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.ndviet</groupId>
-    <artifactId>test-MarsAir</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <parent>
+        <groupId>org.ndviet</groupId>
+        <artifactId>test-parent-pom</artifactId>
+        <version>${revision}</version>
+        <relativePath>../test-parent-pom/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>test-cucumber-framework</artifactId>
+    <name>Cucumber Framework Test Repository</name>
+    <version>${revision}</version>
+    <description>Test repository with test case is created and executed in Cucumber Framework.</description>
+    <url>https://${github.url}/${github.organization}/${github.repository}/tree/${github.branch}</url>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>${github.id}</id>
+            <name>${github.name}</name>
+            <email>${github.email}</email>
+            <roles>
+                <role>maintainer</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@${github.url}:${github.organization}/${github.repository}.git</connection>
+        <developerConnection>scm:git:ssh://git@${github.url}:${github.organization}/${github.repository}.git
+        </developerConnection>
+        <url>https://${github.url}/${github.organization}/${github.repository}/tree/${github.branch}</url>
+    </scm>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <github.repository>test-cucumber-framework</github.repository>
         <!-- Specific for test -->
         <skipTests>false</skipTests>
         <outputDirectory>${project.build.directory}/reports</outputDirectory>
@@ -29,105 +62,86 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.8.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.7.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.11.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>7.11.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-gherkin -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-gherkin</artifactId>
-            <version>7.11.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.cucumber/gherkin -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>gherkin</artifactId>
-            <version>26.0.3</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.6</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>2.0.6</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.ndviet/test-libraries-webui -->
         <dependency>
             <groupId>org.ndviet</groupId>
             <artifactId>test-libraries-webui</artifactId>
-            <version>23.2.2</version>
+            <version>${revision}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.ndviet/test-libraries-utilities -->
         <dependency>
             <groupId>org.ndviet</groupId>
             <artifactId>test-libraries-utilities</artifactId>
-            <version>23.2.2</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
+
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.10.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M9</version>
-                    <configuration>
-                        <skipTests>${skipTests}</skipTests>
-                        <systemPropertyVariables>
-                            <outputDirectory>${outputDirectory}</outputDirectory>
-                            <selenium.screenshot.directory>${selenium.screenshot.directory}
-                            </selenium.screenshot.directory>
-                            <configuration.directory>${configuration.directory}</configuration.directory>
-                            <configuration.base>${configuration.base}</configuration.base>
-                            <configuration.ordering1>${configuration.ordering1}</configuration.ordering1>
-                            <testObjectRepository.directory>${testObjectRepository.directory}
-                            </testObjectRepository.directory>
-                            <webElementIdentifiers.directory>${webElementIdentifiers.directory}
-                            </webElementIdentifiers.directory>
-                            <log4j2.configurationFile>${log4j2.configurationFile}</log4j2.configurationFile>
-                            <log4j2.path>${log4j2.path}</log4j2.path>
-                            <applicationContextPath>${applicationContextPath}</applicationContextPath>
-                            <selenium.browser.type>${selenium.browser.type}</selenium.browser.type>
-                            <basedUrl>${basedUrl}</basedUrl>
-                        </systemPropertyVariables>
-                        <includes>
-                            <include>**/*Runner.java</include>
-                        </includes>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>${skipTests}</skipTests>
+                    <systemPropertyVariables>
+                        <outputDirectory>${outputDirectory}</outputDirectory>
+                        <selenium.screenshot.directory>${selenium.screenshot.directory}
+                        </selenium.screenshot.directory>
+                        <configuration.directory>${configuration.directory}</configuration.directory>
+                        <configuration.base>${configuration.base}</configuration.base>
+                        <configuration.ordering1>${configuration.ordering1}</configuration.ordering1>
+                        <testObjectRepository.directory>${testObjectRepository.directory}
+                        </testObjectRepository.directory>
+                        <webElementIdentifiers.directory>${webElementIdentifiers.directory}
+                        </webElementIdentifiers.directory>
+                        <log4j2.configurationFile>${log4j2.configurationFile}</log4j2.configurationFile>
+                        <log4j2.path>${log4j2.path}</log4j2.path>
+                        <applicationContextPath>${applicationContextPath}</applicationContextPath>
+                        <selenium.browser.type>${selenium.browser.type}</selenium.browser.type>
+                        <basedUrl>${basedUrl}</basedUrl>
+                    </systemPropertyVariables>
+                    <includes>
+                        <include>**/*Runner.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
