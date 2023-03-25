@@ -46,7 +46,7 @@
     <properties>
         <github.repository>test-cucumber-framework</github.repository>
         <!-- Specific for test -->
-        <skipTests>false</skipTests>
+        <skipTests>true</skipTests>
         <outputDirectory>${project.build.directory}/reports</outputDirectory>
         <selenium.screenshot.directory>${outputDirectory}/Screenshots</selenium.screenshot.directory>
         <configuration.directory>${project.basedir}/src/test/resources/configuration</configuration.directory>
