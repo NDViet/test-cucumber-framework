@@ -8,8 +8,8 @@ import org.ndviet.POM.MarsAir;
 import org.ndviet.POM.ReportAnIssue;
 import org.ndviet.POM.SearchForm;
 import org.ndviet.POM.SearchResults;
-import org.ndviet.library.WebUI;
-import org.ndviet.library.configuration.ConfigurationManager;
+import org.ndviet.library.BrowserManagement;
+import org.ndviet.library.configuration.ConfigurationFactory;
 
 public class StepsSearchFlights {
     SearchForm searchForm = new SearchForm();
@@ -19,7 +19,7 @@ public class StepsSearchFlights {
 
     @Given("User is on book ticket page")
     public void userIsOnBookTicketPage() {
-        WebUI.openBrowser(ConfigurationManager.getInstance().getValue("basedUrl"));
+        BrowserManagement.getInstance().openBrowser(ConfigurationFactory.getInstance().getValue("basedUrl"));
     }
 
     @When("User performs to select Departure date as {string}")
