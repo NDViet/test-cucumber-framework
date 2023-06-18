@@ -33,7 +33,7 @@ cd test-cucumber-framework
 ```
 
 ```shell
-mvn clean verify -D"cucumber.filter.tags=@SearchFlights" -D"selenium.browser.type=chrome"
+mvn clean verify -DskipTests=false -D"cucumber.filter.tags=@SearchFlights" -D"selenium.browser.type=chrome"
 ```
 
 ## Reference
