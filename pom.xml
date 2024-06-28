@@ -131,6 +131,8 @@
                 <configuration>
                     <skipTests>${skipTests}</skipTests>
                     <systemPropertyVariables>
+                        <!--https://cucumber.io/docs/cucumber/api/?lang=java-->
+                        <cucumber.plugin>pretty,html:${outputDirectory}/report.html</cucumber.plugin>
                         <outputDirectory>${outputDirectory}</outputDirectory>
                         <selenium.screenshot.directory>${selenium.screenshot.directory}
                         </selenium.screenshot.directory>
@@ -148,7 +150,7 @@
                         <basedUrl>${basedUrl}</basedUrl>
                     </systemPropertyVariables>
                     <includes>
-                        <include>**/*Runner.java</include>
+                        <include>**/*Runner*.java</include>
                     </includes>
                 </configuration>
             </plugin>
