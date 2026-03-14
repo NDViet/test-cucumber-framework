@@ -17,9 +17,22 @@ public class CucumberRunnerTests extends AbstractTestNGCucumberTests {
     @Override
     public Object[][] scenarios() {
         Object[][] scenarios = super.scenarios();
-        String dynamicTags = System.getenv("includes");
-        if (dynamicTags != null && !dynamicTags.isEmpty())
-            return (Arrays.stream(scenarios).filter(scenario -> TagExpressionParser.parse(dynamicTags).evaluate(((PickleWrapper) scenario[0]).getPickle().getTags())).toList()).toArray(new Object[0][0]);
-        else return scenarios;
+        String dynamicTags = System.getProperty("includes");
+        if (dynamicTags == null || dynamicTags.isBlank()) {
+            dynamicTags = System.getenv("includes");
+        }
+        if (dynamicTags == null || dynamicTags.isBlank()) {
+            dynamicTags = System.getenv("INCLUDES");
+        }
+
+        if (dynamicTags != null && !dynamicTags.isBlank()) {
+            final String tagFilter = dynamicTags;
+            return (Arrays.stream(scenarios)
+                    .filter(scenario -> TagExpressionParser.parse(tagFilter)
+                            .evaluate(((PickleWrapper) scenario[0]).getPickle().getTags()))
+                    .toList())
+                    .toArray(new Object[0][0]);
+        }
+        return scenarios;
     }
 }
