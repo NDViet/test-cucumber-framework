@@ -52,12 +52,7 @@ If package access is private, configure GitHub Packages credentials in `~/.m2/se
 <settings>
   <servers>
     <server>
-      <id>github-test-parent-pom</id>
-      <username>${env.GITHUB_ACTOR}</username>
-      <password>${env.GITHUB_TOKEN}</password>
-    </server>
-    <server>
-      <id>github-test-automation-fwk</id>
+      <id>github</id>
       <username>${env.GITHUB_ACTOR}</username>
       <password>${env.GITHUB_TOKEN}</password>
     </server>
